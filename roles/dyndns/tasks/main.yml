@@ -1,0 +1,20 @@
+---
+- name: Ensure the script directory exists
+  ansible.builtin.file:
+    path: "{{ dyndns_install_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Deploy DynDNS update script
+  ansible.builtin.template:
+    src: templates/update_dyndns.sh.j2
+    dest: "{{ dyndns_install_dir }}/update_dyndns.sh"
+    mode: '0755'
+
+- name: Create Cronjob for DynDNS update
+  ansible.builtin.cron:
+    name: "Update DynDNS address"
+    job: "{{ dyndns_install_dir }}/update_dyndns.sh"
+    minute: "0"
+    hour: "*/4"
+    user: {{ dyndns_user}}

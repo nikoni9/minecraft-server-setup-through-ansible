@@ -1,0 +1,43 @@
+---
+- name: Create Minecraft directory in user's home
+  file:
+    path: "{{ minecraft_paper_install_dir }}"
+    state: directory
+    owner: "{{ minecraft_paper_user }}"
+    group: "{{ minecraft_paper_user }}"
+    mode: "0755"
+
+- name: Create Minecraft opt directory 
+  file:
+    path: /opt/minecraft
+    state: directory
+    owner: "{{ minecraft_paper_user }}"
+    group: "{{ minecraft_paper_user }}"
+    mode: "0755"
+
+- name: Create Dockerfile
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/minecraft/docker-compose.yml
+    mode: "0644"
+  notify: Restart Minecraft Container
+
+- name: Copy all files from 'files' directory
+  copy:
+    src: "{{ item }}"
+    dest: "{{ minecraft_paper_install_dir }}"
+    owner: "{{ minecraft_paper_user }}"
+    group: "{{ minecraft_paper_user }}"
+    mode: "0644"
+  with_fileglob:
+    - "files/*"
+  notify: Restart Minecraft Container
+
+- name: Copy all plugins from 'files' directory
+  copy:
+    src: plugins
+    dest: "{{ minecraft_paper_install_dir }}"
+    owner: "{{ minecraft_paper_user }}"
+    group: "{{ minecraft_paper_user }}"
+    mode: "0644"
+  notify: Restart Minecraft Container

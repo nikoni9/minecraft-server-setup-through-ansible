@@ -1,0 +1,4 @@
+- name: Ensure cron is installed
+  ansible.builtin.package:
+    name: cron
+    state: present

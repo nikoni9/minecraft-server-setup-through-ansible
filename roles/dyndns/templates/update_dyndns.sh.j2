@@ -1,0 +1,10 @@
+#!/bin/bash
+PUBLIC_IPV4=$(/usr/bin/curl -4 -s https://ifconfig.me)
+API_KEY="{{ api_key_v4 }}"
+DOMAIN="{{ domain_name }}"
+URL="https://ipv64.net/update.php?key=$API_KEY&domain=$DOMAIN&ip=$PUBLIC_IPV4"
+
+curl -sSL "$URL"
+
+#ipv6
+curl https://ipv64.net/update.php?key={{ api_key_v6 }}

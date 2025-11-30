@@ -1,0 +1,9 @@
+grafana_user: user
+grafana_install_dir: /home/{{ grafana_user }}/grafana
+grafana_image:  grafana/grafana:{{ grafana_image_version }}
+grafana_image_version: 12.1.4
+grafana_sec_password: admin
+grafana_sec_user: admin
+grafana_name: grafana
+grafana_http_port: 3000
+grafana_http_port_internal: {{ grafana_http_port }}

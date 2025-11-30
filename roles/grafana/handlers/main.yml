@@ -1,0 +1,2 @@
+  - name: Restart grafana Container
+    command: docker compose -f /opt/grafana/docker-compose.yml up -d --force-recreate

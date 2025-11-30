@@ -1,0 +1,2 @@
+  - name: Restart Minecraft Container
+    command: docker compose -f /opt/minecraft/docker-compose.yml up -d --force-recreate

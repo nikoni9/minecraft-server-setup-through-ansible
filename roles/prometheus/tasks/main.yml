@@ -1,0 +1,34 @@
+---
+- name: Create prometheus directory in user's home
+  file:
+    path: "{{ prometheus_install_dir }}"
+    state: directory
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_user }}"
+    mode: "0755"
+
+- name: Create prometheus opt directory 
+  file:
+    path: /opt/prometheus
+    state: directory
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_user }}"
+    mode: "0755"
+
+- name: Copy config
+  copy:
+    src: "{{ item }}"
+    dest: /opt/prometheus/
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_user }}"
+    mode: "0644"
+  with_fileglob:
+    - "files/*"
+  notify: Restart prometheus Container
+
+- name: Create Dockerfile
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/prometheus/docker-compose.yml
+    mode: "0644"
+  notify: Restart prometheus Container

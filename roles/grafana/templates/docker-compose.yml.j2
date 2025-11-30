@@ -1,0 +1,17 @@
+services:
+  grafana:
+    image: {{ grafana_image }}
+    restart: unless-stopped
+    container_name: {{ grafana_name }}
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: {{ grafana_sec_password }}
+      GF_SECURITY_ADMIN_USER: {{ grafana_sec_user }}
+    volumes:
+      - grafana:/data
+      - {{ grafana_install_dir }}:/data
+    ports:
+      - "{{ grafana_http_port }}:{{ grafana_http_port_internal }}"
+    stdin_open: true
+    tty: true
+volumes:
+  grafana:

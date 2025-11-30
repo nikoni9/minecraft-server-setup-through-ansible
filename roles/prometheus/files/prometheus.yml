@@ -1,0 +1,8 @@
+# my global config
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+- job_name: 'minecraft'
+  static_configs:
+    - targets: ['192.168.1.51:9091']

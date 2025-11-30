@@ -1,0 +1,6 @@
+api_key_v4: api_key_goes_here
+api_key_v6: api_key_goes_here
+domain_name: domain_goes_here
+
+dyndns_install_dir: /home/{{ dyndns_user }}/dyndns
+dyndns_user: user

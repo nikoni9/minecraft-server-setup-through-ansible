@@ -1,0 +1,24 @@
+services:
+  minecraft:
+    image: {{ minecraft_paper_image }}
+    restart: unless-stopped
+    container_name: {{ minecraft_paper_name }}
+    environment:
+      MEMORYSIZE: "{{ minecraft_paper_memory_size }}"
+      EULA: "TRUE" # MUST ALWAYS BE TRUE
+    volumes:
+      - minecraftserver:/data
+      - {{ minecraft_paper_install_dir }}:/data
+      - {{ minecraft_paper_install_dir }}/plugins:/data/plugins
+      - {{ minecraft_paper_install_dir }}/bluemap:/data/bluemap
+      - {{ minecraft_paper_install_dir }}/logs:/data/logs
+
+    ports:
+      - "{{ minecraft_paper_java_port }}:{{ minecraft_paper_java_port_internal }}"
+      - "{{ minecraft_paper_bedrock_port }}:{{ minecraft_paper_bedrock_port_internal }}/udp"
+      - "{{ minecraft_paper_bluemap_port }}:{{ minecraft_paper_bluemap_port_internal }}"
+      - "{{ minecraft_paper_metrics_port }}:{{ minecraft_paper_metrics_port_internal }}"
+    stdin_open: true
+    tty: true
+volumes:
+  minecraftserver:

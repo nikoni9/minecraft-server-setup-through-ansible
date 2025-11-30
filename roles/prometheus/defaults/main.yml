@@ -1,0 +1,5 @@
+prometheus_user: user
+prometheus_install_dir: /home/{{ prometheus_user }}/prometheus
+prometheus_image:  prom/prometheus:{{ prometheus_image_version }}
+prometheus_image_version: v3.8.0-rc.0
+prometheus_name: prometheus

@@ -1,0 +1,15 @@
+services:
+  prometheus:
+    image: {{ prometheus_image }}
+    restart: unless-stopped
+    container_name: {{ prometheus_name }}
+    volumes:
+      - prometheus:/data
+      - {{ prometheus_install_dir }}:/data
+      - /opt/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    stdin_open: true
+    tty: true
+volumes:
+  prometheus:
