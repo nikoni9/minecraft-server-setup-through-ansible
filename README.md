@@ -1,9 +1,7 @@
 # minecraft-server-setup-through-ansible
-Ansible setup I use to deploy a Minecraft Server for the anual two week Minecraft phase
+Ansible setup I use to deploy a Minecraft Server for the anual two week Minecraft phase. It's still a bit janky since I made this in a rush. May or may not update it later on.
 
-It's still a bit janky since I made this in a rush. May or may not update it later on
-
-It deploys a paper server, meant to be used with
+It deploys a paper server, meant to be used with:
 
 - Bluemap
 - Floodgate
@@ -14,11 +12,13 @@ It deploys a paper server, meant to be used with
 
 ## General Setup
 
-Set the ip of the target host under `inventory/hosts.ini`
+Set the IP of the target host under `inventory/hosts.ini`
 
-You can adjust, server ops, the whitelist, server icon and the server properties by changing the files in the `files` directory
+You can adjust, server ops, the whitelist, server icon and the server properties by changing the respective files in the `files` directory
 
-The dyndns role will try to deploy a dyndns using [ipv64](https://ipv64.net/) as it's dyndns provider. Dissable execution of this role if intend on using another dyndns provider.
+The dyndns role will try to deploy a dyndns using [ipv64](https://ipv64.net/) as it's dyndns provider. Dissable execution of this role if you intend on using another dyndns provider.
+
+Grafana Web UI will be exposed on port 3000. You will still need to configure grafana manually. Also consider changing the password for both grafana and metrics, since it just uses default credentials when exposing it.
 
 ## Plugin configuration
 
