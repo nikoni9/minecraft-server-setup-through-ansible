@@ -6,10 +6,10 @@ minecraft_paper_memory_size: 8G
 minecraft_paper_name: mcserver
 
 minecraft_paper_java_port: 25565
-minecraft_paper_java_port_internal: {{ minecraft_paper_java_port }}
+minecraft_paper_java_port_internal: "{{ minecraft_paper_java_port }}"
 minecraft_paper_bedrock_port: 19132
-minecraft_paper_bedrock_port_internal: {{ minecraft_paper_bedrock_port }}
+minecraft_paper_bedrock_port_internal: "{{ minecraft_paper_bedrock_port }}"
 minecraft_paper_bluemap_port: 8100
-minecraft_paper_bluemap_port_internal: {{ minecraft_paper_bluemap_port }}
+minecraft_paper_bluemap_port_internal: "{{ minecraft_paper_bluemap_port }}"
 minecraft_paper_metrics_port: 9091
-minecraft_paper_metrics_port_internal: {{ minecraft_paper_metrics_port }}
+minecraft_paper_metrics_port_internal: "{{ minecraft_paper_metrics_port }}"

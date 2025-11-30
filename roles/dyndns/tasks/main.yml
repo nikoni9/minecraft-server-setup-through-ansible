@@ -17,4 +17,4 @@
     job: "{{ dyndns_install_dir }}/update_dyndns.sh"
     minute: "0"
     hour: "*/4"
-    user: {{ dyndns_user}}
+    user: "{{ dyndns_user}}"
